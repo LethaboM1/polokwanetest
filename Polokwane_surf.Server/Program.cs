@@ -21,17 +21,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<EmailService>();
 
-// Configure CORS to allow local React dev and deployed React frontend
+// Configure CORS to allow requests from local React dev and deployed Netlify app
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
         policy.WithOrigins(
-            "https://localhost:49381",      // React local dev server
-            "https://polokwanewebsite.netlify.app", // Replace with your actual deployed API domain
-            "https://localhost:7059"
-
-
+            "http://localhost:5173",                       // React local dev (Vite)
+            "https://polokwanewebsite.netlify.app"        // Live Netlify site
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
