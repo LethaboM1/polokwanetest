@@ -4,8 +4,11 @@ import { FaEnvelope, FaMapMarkerAlt, FaFax } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from '@emailjs/browser';
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
 
+
+//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://polokwanetest.onrender.com';
 
 const Contact = () => {
     const [name, setName] = useState('');
