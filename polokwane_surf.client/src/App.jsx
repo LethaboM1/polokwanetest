@@ -28,7 +28,14 @@ function App() {
         AOS.init({ duration: 1000, once: true });
 
         // Test backend connection
-        fetch(`VITE_API_URL=https://localhost:7059`)
+        // Detect environment and set API base URL
+        const API_BASE_URL =
+            window.location.hostname === 'localhost'
+                ? 'https://localhost:7059'
+                : 'https://polokwanewebsite.netlify.app'; 
+
+        // Test backend connection
+        fetch(`${API_BASE_URL}/api/your-test-endpoint`) 
             .then((res) => res.json())
             .then((data) => {
                 console.log("Backend API says:", data.message);
@@ -36,8 +43,7 @@ function App() {
             .catch((error) => {
                 console.error("Error fetching from backend:", error);
             });
-        }, []);
-
+    }, []);
 
 
     return (
