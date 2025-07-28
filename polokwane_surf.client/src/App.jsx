@@ -5,11 +5,9 @@ import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-// Layout
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-// Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Features from './pages/Features';
@@ -23,24 +21,27 @@ import Testimonial from './pages/Testimonial';
 import Documents from './pages/Documents';
 import Contact from './pages/Contact';
 
-function App() {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
 
+function App() {
     useEffect(() => {
+        // Init animations
         AOS.init({ duration: 1000, once: true });
 
-        // Optional test connection
-        fetch(`${baseUrl}/api/hello`)
-            .then((res) => {
-                if (!res.ok) throw new Error(`Backend returned ${res.status}`);
-                return res.json();
+        // Test backend connection
+        fetch(`VITE_API_URL=https://localhost:7059`)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("Backend API says:", data.message);
             })
-            .then((data) => console.log('Backend API says:', data.message))
-            .catch((error) => console.warn('Backend test failed:', error.message));
-    }, [baseUrl]);
+            .catch((error) => {
+                console.error("Error fetching from backend:", error);
+            });
+        }, []);
+
+
 
     return (
-        <Router basename="/polokwane_surf">
+        <Router>
             <Header />
             <main style={{ paddingTop: '80px' }}>
                 <Routes>
@@ -64,3 +65,4 @@ function App() {
 }
 
 export default App;
+

@@ -5,11 +5,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from '@emailjs/browser';
 
-
-//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://polokwanetest.onrender.com';
-
 const Contact = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -24,8 +19,11 @@ const Contact = () => {
 
         const formData = { name, phoneNumber, email, subject, message };
 
+        const API_BASE_URL = import.meta.env.PROD
+            ? 'https://polokwanewebsite.netlify.app' // Replace with your actual deployed API domain
+            : 'https://localhost:7059'; // Local backend
+
         try {
-            // Save to DB via .NET API
             const dbResponse = await fetch(`${API_BASE_URL}/api/contact/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

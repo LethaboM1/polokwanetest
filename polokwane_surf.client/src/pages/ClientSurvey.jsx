@@ -7,9 +7,6 @@ import '../App.css';
 import emailjs from '@emailjs/browser';
 
 
-//const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://polokwanetest.onrender.com';
 
 const ClientSurvey = () => {
     const [formData, setFormData] = useState({
@@ -47,8 +44,11 @@ const ClientSurvey = () => {
         const stars = '★'.repeat(starRating); // Unicode stars
 
 
+        const API_BASE_URL = import.meta.env.PROD
+            ? 'https://polokwanewebsite.netlify.app' // Replace with your actual deployed API domain
+            : 'https://localhost:7059'; // Local backend
+
         try {
-            console.log('API base URL:', import.meta.env.VITE_API_BASE_URL);
             const dbResponse = await fetch(`${API_BASE_URL}/api/ClientSurvey/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
