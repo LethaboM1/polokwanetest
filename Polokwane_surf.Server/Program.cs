@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp", policy =>
     {
         policy.WithOrigins(
-            "https://localhost:49381",            // React local dev server
+            //"https://localhost:49381",            // React local dev server
             "https://polokwanetest.onrender.com"  // deployed frontend URL
         )
         .AllowAnyHeader()
