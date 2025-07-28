@@ -24,7 +24,7 @@ builder.Services.AddScoped<EmailService>();
 // Configure CORS to allow requests from local React dev and deployed Netlify app
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp", policy =>
+    options.AddPolicy("AllowNetlify", policy =>
     {
         policy.WithOrigins(
             "http://localhost:5173",                       // React local dev (Vite)
@@ -49,7 +49,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowReactApp");
+app.UseCors("AllowNetlify");
 
 app.UseAuthorization();
 
