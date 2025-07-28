@@ -1,0 +1,1035 @@
+﻿/* header */
+* {
+    box-sizing: border-box;
+}
+
+html, body  {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.header {
+    background: linear-gradient(to right, #006400, #ffffff, #d3d3d3);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 15px 0;
+    z-index: 999;
+    transition: all 0.4s;
+}
+
+/* logo and name */
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo h1.sitename {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.sitename {
+    font-size: 22px;
+    font-weight: 700;
+    color: #006400;
+    margin: 0;
+    text-decoration: none; 
+    border-bottom: none;
+}
+
+.slogan {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin: 2px 0 0;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-bottom: none;
+}
+
+
+
+/* Nav bar */
+.navmenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navmenu li {
+    position: relative;
+}
+
+    .navmenu li a,
+    .navmenu li span {
+        display: block;
+        padding: 10px 15px;
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Dropdown Styles */
+    .navmenu li.dropdown .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 180px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        display: none;
+        z-index: 1000;
+    }
+
+    .navmenu li.dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+.navmenu .dropdown-menu li a {
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+    .navmenu .dropdown-menu li a:hover {
+        background-color: #006400;
+        color: white;
+    }
+
+/* Mobile toggle */
+.mobile-nav-toggle {
+    font-size: 28px;
+    color: #006400;
+    cursor: pointer;
+}
+
+/* Mobile responsive nav */
+@media (max-width: 1200px) {
+    .navmenu {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        width: 250px;
+        padding: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+        .navmenu.show {
+            transform: translateX(0);
+        }
+
+        .navmenu ul {
+            flex-direction: column;
+        }
+}
+
+/* Carousel and Wave Styling */
+.carousel-wrapper {
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover; /* Or use `contain` if you prefer full image display */
+}
+
+/* Animated Wave Section */
+.wave-container {
+    position: relative;
+    width: 100%;
+    margin-top: -28px;
+}
+
+    .wave-container svg {
+        display: block;
+        width: 100%;
+        height: 200px; /* Increased from 120px */
+    }
+
+/* Optional: Adjust other icons or section styles */
+.tab-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 8px;
+    transition: transform 0.2s ease;
+}
+
+.nav-link.active .tab-icon {
+    transform: scale(1.2);
+}
+
+.features.section {
+    padding: 60px 0;
+}
+
+.tab-pane img.img-fluid {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+
+/* about  */
+.about.section {
+    padding: 20px 0 60px 0; /* less space on top */
+}
+
+.section-heading {
+    margin-bottom: 20px;
+}
+
+    .section-heading .line {
+        flex-grow: 1;
+        height: 2px;
+        background-color: #198754;
+    }
+
+.green-check {
+    color: #198754;
+    margin-right: 8px;
+}
+
+.styled-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+    .styled-list li {
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+
+/* Feature tab button titles */
+.nav-tabs .nav-link h4 {
+    color: #212529; /* dark black text */
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link.active h4 {
+    color: #198754; /* Polokwane green for active tab */
+}
+
+/* Section content heading */
+.features h3 {
+    color: #198754; /* green headings */
+    font-weight: 700;
+}
+
+/* Optional: green check icon if you want to customize bullets */
+.features ul li i {
+    color: #198754;
+}
+
+/* Optional: slight hover effect on tabs */
+.nav-tabs .nav-link:hover h4 {
+    color: #198754;
+}
+
+/* services */
+.section-heading {
+    margin-bottom: 2rem;
+}
+
+    .section-heading h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    .section-heading .line {
+        flex-grow: 1;
+        height: 2px;
+        background-color: #198754; /* Bootstrap green */
+    }
+
+/* service Card  */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #198754;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    min-height: 405px;
+    max-height: 405px;
+    width: 100%;
+    background-color: #fff;
+}
+
+    .service-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 20px 2px rgba(25, 135, 84, 0.5);
+    }
+
+.section-heading h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.line {
+    height: 3px;
+    background-color: green;
+    width: 100px;
+}
+.green-check {
+    color: rgba(0, 128, 0, 0.75); /* semi-transparent green */
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+
+/* Portfolio Section */
+.portfolio-section {
+    padding: 2rem;
+    background: #f9f9f9;
+}
+
+.portfolio-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+    .portfolio-heading h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #222;
+    }
+
+/*.portfolio-line {
+    flex-grow: 1;
+    height: 3px;
+    background-color: #198754;
+    border-radius: 2px;
+}*/
+.portfolio-line {
+    height: 3px;
+    background-color: green;
+    width: 100px;
+}
+
+.portfolio-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+}
+
+.portfolio-tab {
+    padding: 0.6rem 1.2rem;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+    .portfolio-tab.active {
+        background-color: #198754;
+        color: #fff;
+    }
+
+.portfolio-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.portfolio-card {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    padding: 1rem;
+    align-items: flex-start;
+}
+
+.portfolio-img {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.portfolio-info {
+    flex: 1;
+}
+
+.portfolio-title {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+.portfolio-description {
+    margin: 0.3rem 0;
+    color: #444;
+}
+
+.portfolio-client {
+    margin: 0.3rem 0;
+    color: #666;
+}
+
+.portfolio-category {
+    background-color: #198754;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+/* Gallery  */
+.gallery-section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .section-heading h2 {
+        font-size: 32px;
+        color: #2c3e50;
+    }
+
+    .section-heading p {
+        font-size: 16px;
+        color: #777;
+    }
+
+.gallery-filters {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+    .gallery-filters li {
+        display: inline-block;
+        margin: 0 15px;
+        cursor: pointer;
+        padding: 8px 16px;
+        background: #eee;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+
+        .gallery-filters .filter-active,
+        .gallery-filters li:hover {
+            background: #3ba54a;
+            color: white;
+        }
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.gallery-info {
+    padding: 15px;
+}
+
+    .gallery-info h4 {
+        font-size: 18px;
+        margin: 0 0 5px;
+    }
+
+.gallery-links {
+    margin-top: 10px;
+}
+
+    .gallery-links a {
+        margin-right: 10px;
+        color: #3ba54a;
+        font-size: 18px;
+    }
+
+/* Testimonial  */
+.testimonials.section {
+    padding: 60px 0;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+/* Swiper container padding */
+.testimonial-swiper {
+  padding-bottom: 40px;
+}
+
+/* Flexbox alignment */
+.swiper-slide {
+  display: flex;
+  height: auto;
+}
+
+/* Ensure all testimonial items are consistent in height */
+.testimonial-item {
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .testimonial-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 128, 0, 0.6); /* Green glow */
+    }
+
+
+/* Testimonial image styling */
+.testimonial-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+}
+
+/* Stars styling */
+.stars {
+  color: #fbc02d;
+  margin-bottom: 10px;
+}
+
+/* Quotation icons styling */
+.quote-icon-left,
+.quote-icon-right {
+  color: #aaa;
+  margin: 0 5px;
+}
+
+/* Survey  */
+.survey-form .form-control,
+.survey-form .form-select {
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.survey-form textarea {
+    resize: vertical;
+}
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-top: 6px;
+}
+
+
+/* Contact  */
+.contact-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+    .section-heading h4 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2a2a2a;
+    }
+
+    .section-heading .line {
+        flex-grow: 1;
+        height: 2px;
+        background-color: #4CAF50;
+        margin-left: 15px;
+    }
+
+.contact-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.contact-info,
+.contact-form {
+    flex: 1 1 45%;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.info-icon {
+    font-size: 20px;
+    color: #4CAF50;
+    margin-top: 4px;
+}
+
+.map-container {
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #4CAF50;
+        outline: none;
+    }
+
+.contact-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .contact-button:hover {
+        background-color: #388e3c;
+    }
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #4CAF50;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.success-message {
+    margin-top: 12px;
+    color: green;
+    font-weight: 500;
+}
+
+/* Toast success style */
+.my-toast-success {
+    background-color: #4caf50 !important;
+    color: white !important;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Toast error style */
+.my-toast-error {
+    background-color: #f44336 !important;
+    color: white !important;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Spinner for loading */
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-grid {
+        flex-direction: column;
+    }
+
+    .contact-info,
+    .contact-form {
+        flex: 1 1 100%;
+    }
+}
+
+/* Chatbot*/
+/* Chat Toggle Button */
+/*.chat-toggle-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #006837;*/ /* Adjust to your brand color */
+    /*color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .chat-toggle-btn:hover {
+        background-color: #004d27;
+        transform: scale(1.1);
+    }*/
+
+/* Chat Window */
+/*.chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 320px;
+    max-height: 480px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 9998;
+}
+
+    .chat-window.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }*/
+
+/* Header */
+/*.chat-header {
+    background-color: #006837;
+    color: white;
+    padding: 12px 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}*/
+
+/* Messages Container */
+/*.chat-messages {
+    flex: 1;
+    padding: 12px 16px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #006837 #e0e0e0;
+}*/
+
+    /* Scrollbar styles for webkit */
+    /*.chat-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+        background-color: #006837;
+        border-radius: 3px;
+    }
+
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    line-height: 1.3;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 18px;
+    padding: 8px 12px;
+}
+
+    .chat-message.bot {
+        background-color: #e0e7eb;
+        color: #222;
+        align-self: flex-start;
+        gap: 8px;
+    }
+
+    .chat-message.user {
+        background-color: #006837;
+        color: white;
+        align-self: flex-end;
+        justify-content: flex-end;
+        border-bottom-right-radius: 4px;
+    }*/
+
+/* Bot avatar style */
+/*.bot-header-avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.chat-header {
+    background-color: #004d40;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.message-text {
+    white-space: pre-wrap;
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+}*/
+
+/* Input Area */
+/*.chat-input-area {
+    display: flex;
+    padding: 8px 12px;
+    border-top: 1px solid #ccc;
+    background-color: #f7f7f7;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.chat-input {
+    flex: 1;
+    border: none;
+    resize: none;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 1rem;
+    outline: none;
+    max-height: 80px;
+    font-family: inherit;
+    background-color: white;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chat-send-btn {
+    background-color: #004d27;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .chat-send-btn svg {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+
+    .chat-send-btn:hover {
+        background-color: #28a745;
+    }
+
+.chat-options {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chat-option-btn {
+    background-color: #006837;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+    .chat-option-btn:hover {
+        background-color: #004d27;
+    }
+
+.typing .message-text {
+    font-style: italic;
+    opacity: 0.7;
+}*/
+
+/* Responsive for smaller devices */
+/*@media (max-width: 480px) {
+    .chat-window {
+        width: 90vw;
+        bottom: 80px;
+        right: 5vw;
+        max-height: 60vh;
+    }
+
+   .chat-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #f1f1f1;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-toggle-btn:hover {
+  background-color: #e0ffe0;
+}
+
+.chat-icon-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.close-icon {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+}*/
+
+
+/* footer */
+.footer {
+    background: linear-gradient(to right, #006400, #ffffff, #d3d3d3);
+    color: #000;
+    padding: 40px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+    .footer .sitename {
+        font-size: 22px;
+        font-weight: 700;
+        color: #006400;
+        margin: 0;
+        text-decoration: none;
+        border-bottom: none;
+    }
+
+    .footer .slogan {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
+        margin: 2px 0 10px;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        border-bottom: none;
+    }
+
+    .footer .footer-description {
+        max-width: 600px;
+        margin: 0 auto 20px;
+        font-size: 15px;
+        color: #333;
+    }
+
+    .footer .social-links a {
+        color: #006400;
+        font-size: 18px;
+        transition: color 0.3s;
+    }
+
+        .footer .social-links a:hover {
+            color: #000;
+        }
+
