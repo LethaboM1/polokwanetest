@@ -2,8 +2,8 @@
   "name": "polokwane_server",
   "version": "1.0.0",
   "scripts": {
-    "start": "node Server/server.js",
-    "deploy": "gh-pages -d dist"
+    "start": "node server.js"
+
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -17,9 +17,5 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.30.1",
     "swiper": "^11.2.8"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
-
 }

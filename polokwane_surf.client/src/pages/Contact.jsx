@@ -4,6 +4,7 @@ import { FaEnvelope, FaMapMarkerAlt, FaFax } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from '@emailjs/browser';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
 
 
 const Contact = () => {
@@ -22,7 +23,7 @@ const Contact = () => {
 
         try {
             // Save to DB via .NET API
-            const dbResponse = await fetch('https://localhost:7059/api/contact/submit', {
+            const dbResponse = await fetch(`${API_BASE_URL}/api/contact/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

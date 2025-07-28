@@ -169,6 +169,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../App.css';
 import emailjs from '@emailjs/browser';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://localhost:7059';
 
 const ClientSurvey = () => {
     const [formData, setFormData] = useState({
@@ -206,7 +207,7 @@ const ClientSurvey = () => {
         const stars = '★'.repeat(starRating); // Unicode stars
 
         try {
-            const dbResponse = await fetch(`https://localhost:7059/api/ClientSurvey/submit`, {
+            const dbResponse = await fetch(`${API_BASE_URL}/api/ClientSurvey/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
