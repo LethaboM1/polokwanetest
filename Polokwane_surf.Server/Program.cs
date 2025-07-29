@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 // Configure CORS to allow your frontend origins
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowNetlify", policy =>
+    options.AddPolicy("AllowNetlifyAndLocalhost", policy =>
     {
         policy.WithOrigins(
             "https://polokwanewebsite.netlify.app",  //  live frontend
@@ -46,7 +46,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // IMPORTANT: Use CORS before Authorization and MapControllers
-app.UseCors("AllowNetlify");
+app.UseCors("AllowNetlifyAndLocalhost");
 
 app.UseAuthorization();
 

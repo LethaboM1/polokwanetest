@@ -44,7 +44,7 @@ const ClientSurvey = () => {
             ? 'https://polokwane-server.onrender.com'
             : 'https://localhost:7059';
 
-        try {
+        try {cd
             const dbResponse = await fetch(`${API_BASE_URL}/api/ClientSurvey/submit`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

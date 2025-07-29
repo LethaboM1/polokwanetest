@@ -7,8 +7,9 @@ namespace Polokwane_surf.Server.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<ClientSurvey> ClientSurveys { get; set; }
-        public DbSet<ContactForm> ContactForm { get; set; }
+       public DbSet<ClientSurvey> ClientSurveys { get; set; } = null!;
+       public DbSet<ContactForm> ContactForm { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
