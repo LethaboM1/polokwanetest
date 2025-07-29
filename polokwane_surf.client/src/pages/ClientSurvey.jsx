@@ -5,7 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../App.css';
 
-import { sendSurveyEmail } from '../api/emailjsService'; 
+import { sendSurveyEmail } from '../services/EmailService';
+
 
 const ClientSurvey = () => {
     const [formData, setFormData] = useState({
