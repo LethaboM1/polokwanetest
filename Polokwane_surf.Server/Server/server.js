@@ -20,7 +20,7 @@ app.options('*', cors(corsOptions));
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Polokwane Backend is Running 🚀');
+    res.send('Polokwane S Backend is Running');
 });
 
 app.get('/api/hello', (req, res) => {
