@@ -1,22 +1,30 @@
-# Use the official .NET 8.0 SDK image to build the app
+# Use the official .NET SDK image to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /app
 
-# Copy csproj file(s) and restore dependencies
-COPY *.csproj ./
+# Copy project files
+COPY . ./
+
+# Restore dependencies
 RUN dotnet restore
 
-# Copy all files and publish the app
-COPY . ./
-RUN dotnet publish -c Release -o out
+# Publish the app to the /out directory
+RUN dotnet publish -c Release -o /out
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# Use the ASP.NET runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+
 WORKDIR /app
 
-COPY --from=build /app/out .
+# Copy published app from build stage
+COPY --from=build /out ./
 
-EXPOSE 7059
+# Set environment variable for ASP.NET
+ENV ASPNETCORE_URLS=http://+:8080
 
+# Expose port (Render expects the app to listen on 8080)
+EXPOSE 8080
+
+# Run the app
 ENTRYPOINT ["dotnet", "polokwane_surf.server.dll"]
