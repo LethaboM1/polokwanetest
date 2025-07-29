@@ -21,20 +21,22 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<EmailService>();
 
-// Configure CORS to allow requests from local React dev and deployed Netlify app
+// Configure CORS to allow requests from local dev and Netlify
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowNetlify", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:5173",                       // React local dev (Vite)
-            "https://polokwanewebsite.netlify.app"        // Live Netlify site
+            "http://localhost:5173",                     // local React dev
+            "https://polokwanewebsite.netlify.app"      // Netlify production
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
+        // .AllowCredentials(); // Uncomment if using cookies/auth
     });
 });
 
+// Swagger for development
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -47,9 +49,20 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Log Origin headers for CORS debug (optional)
+app.Use(async (context, next) =>
+{
+    var origin = context.Request.Headers["Origin"].ToString();
+    if (!string.IsNullOrEmpty(origin))
+    {
+        Console.WriteLine($"Incoming request from: {origin}");
+    }
+    await next();
+});
+
 app.UseHttpsRedirection();
 
-app.UseCors("AllowNetlify");
+app.UseCors("AllowNetlify");   
 
 app.UseAuthorization();
 

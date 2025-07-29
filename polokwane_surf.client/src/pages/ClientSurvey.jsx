@@ -40,13 +40,9 @@ const ClientSurvey = () => {
 
         setLoading(true);
 
-        const { name, email, serviceUsed, feedback, rating } = formData;
-        const stars = '★'.repeat(starRating); // Unicode stars
-
-
         const API_BASE_URL = import.meta.env.PROD
-            ? 'https://polokwanewebsite.netlify.app' // Replace with your actual deployed API domain
-            : 'https://localhost:7059'; // Local backend
+            ? 'https://polokwane-server.onrender.com'
+            : 'https://localhost:7059';
 
         try {
             const dbResponse = await fetch(`${API_BASE_URL}/api/ClientSurvey/submit`, {
@@ -54,6 +50,7 @@ const ClientSurvey = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
+
 
             if (!dbResponse.ok) {
                 const errorText = await dbResponse.text();

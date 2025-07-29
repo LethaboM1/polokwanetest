@@ -24,23 +24,19 @@ import Contact from './pages/Contact';
 
 function App() {
     useEffect(() => {
-        // Init animations
         AOS.init({ duration: 1000, once: true });
 
-        // Test backend connection
-        // Detect environment and set API base URL
         const API_BASE_URL =
             window.location.hostname === 'localhost'
                 ? 'https://localhost:7059'
-                : 'https://polokwanewebsite.netlify.app'; 
+                : 'https://polokwane-server.onrender.com';
 
-        // Test backend connection
-        fetch(`${API_BASE_URL}/api/your-test-endpoint`) 
-            .then((res) => res.json())
-            .then((data) => {
+        fetch(`${API_BASE_URL}/api/your-test-endpoint`)
+            .then(res => res.json())
+            .then(data => {
                 console.log("Backend API says:", data.message);
             })
-            .catch((error) => {
+            .catch(error => {
                 console.error("Error fetching from backend:", error);
             });
     }, []);

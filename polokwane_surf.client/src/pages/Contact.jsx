@@ -20,8 +20,9 @@ const Contact = () => {
         const formData = { name, phoneNumber, email, subject, message };
 
         const API_BASE_URL = import.meta.env.PROD
-            ? 'https://polokwanewebsite.netlify.app' // Replace with your actual deployed API domain
-            : 'https://localhost:7059'; // Local backend
+            ? 'https://polokwane-server.onrender.com'  
+            : 'https://localhost:7059';               
+
 
         try {
             const dbResponse = await fetch(`${API_BASE_URL}/api/contact/submit`, {
@@ -29,7 +30,6 @@ const Contact = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-
 
             if (!dbResponse.ok) {
                 // Try to get detailed error info from backend response
