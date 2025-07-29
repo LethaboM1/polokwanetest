@@ -16,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<EmailService>();
 builder.Services.AddControllers();
 
-// Configure CORS to allow your frontend origins
+// Configure CORS to allow your frontend origins TO WRK
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowNetlifyAndLocalhost", policy =>
