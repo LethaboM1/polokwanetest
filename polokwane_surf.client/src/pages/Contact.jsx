@@ -3,7 +3,8 @@ import '../App.css';
 import { FaEnvelope, FaMapMarkerAlt, FaFax } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import emailjs from '@emailjs/browser';
+
+import { sendContactEmail } from '../api/emailjsService';
 
 const Contact = () => {
     const [name, setName] = useState('');
@@ -47,6 +48,8 @@ const Contact = () => {
                 'KhrJ-Dy0fzYUqQKnW'
             );
 
+            // After successful backend submit, send email with EmailJS
+            await sendContactEmail(formData);
             toast.success("Message sent successfully!");
             setName('');
             setPhoneNumber('');

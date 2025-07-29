@@ -4,9 +4,8 @@ import CarouselSection from '../components/CarouselSection';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../App.css';
-import emailjs from '@emailjs/browser';
 
-
+import { sendSurveyEmail } from '../api/emailjsService'; 
 
 const ClientSurvey = () => {
     const [formData, setFormData] = useState({
@@ -64,6 +63,9 @@ const ClientSurvey = () => {
                 { name, email, serviceUsed, rating, stars, feedback },
                 'KhrJ-Dy0fzYUqQKnW'  
             );
+
+            // After successful API submit, send EmailJS email:
+            await sendSurveyEmail(formData);
 
             toast.success('Survey submitted and email sent!');
             setFormData({ name: '', email: '', serviceUsed: '', rating: '', feedback: '' });
