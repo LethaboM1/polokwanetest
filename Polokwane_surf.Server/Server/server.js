@@ -9,7 +9,7 @@ const corsOptions = {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 204,
-    credentials: true // if you don't use cookies/auth, you can remove this
+    //credentials: true // if you don't use cookies/auth, you can remove this
 };
 
 app.use(cors(corsOptions));
