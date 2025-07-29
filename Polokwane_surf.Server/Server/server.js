@@ -5,7 +5,12 @@ const app = express();
 const PORT = process.env.PORT || 7059;
 
 const corsOptions = {
-    origin: ['https://polokwanewebsite.netlify.app', 'http://localhost:5173'],
+    origin: [
+        'https://polokwanewebsite.netlify.app',
+        'http://localhost:5173',
+        'https://localhost:5173'
+    ]
+,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 204,
