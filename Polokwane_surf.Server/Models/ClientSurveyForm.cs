@@ -25,18 +25,18 @@ namespace Polokwane_surf.Server.Models
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        public string ServiceUsed { get; set; }
-
-        [Required]
-        public int Rating { get; set; }
+        public string? ServiceUsed { get; set; }
 
         [Required]
-        public string Feedback { get; set; }
+        public int? Rating { get; set; }
+
+        [Required]
+        public string? Feedback { get; set; }
 
         public DateTime SubmittedAt { get; set; }
     }
