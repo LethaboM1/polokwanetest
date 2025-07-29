@@ -1,15 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.EntityFrameworkCore;
 using Polokwane_surf.Server.Data;
 using Polokwane_surf.Server.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext (MySQL)
+// Configure MySQL DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -17,52 +12,41 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-// Add Controllers & Services
-builder.Services.AddControllers();
+// Add EmailService and Controllers
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddControllers();
 
-// Configure CORS to allow requests from local dev and Netlify
+// Configure CORS to allow your frontend origins
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowNetlify", policy =>
     {
         policy.WithOrigins(
-            "http://localhost:5173",                     // local React dev
-            "https://polokwanewebsite.netlify.app"      // Netlify production
+            "https://polokwanewebsite.netlify.app",  //  live frontend
+            "http://localhost:5173"                   // Local dev 
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
-        // .AllowCredentials(); // Uncomment if using cookies/auth
+        //.AllowCredentials(); // Enable if you use auth/cookies
     });
 });
 
-// Swagger for development
+// Add Swagger (optional)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Log Origin headers for CORS debug (optional)
-app.Use(async (context, next) =>
-{
-    var origin = context.Request.Headers["Origin"].ToString();
-    if (!string.IsNullOrEmpty(origin))
-    {
-        Console.WriteLine($"Incoming request from: {origin}");
-    }
-    await next();
-});
-
 app.UseHttpsRedirection();
 
-app.UseCors("AllowNetlify");   
+// IMPORTANT: Use CORS before Authorization and MapControllers
+app.UseCors("AllowNetlify");
 
 app.UseAuthorization();
 
