@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
-        //.AllowCredentials(); // Enable if you use auth/cookies
+      
     });
 });
 
